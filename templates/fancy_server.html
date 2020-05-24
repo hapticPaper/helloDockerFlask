@@ -1,0 +1,68 @@
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127859074-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-127859074-4');
+</script>
+
+    <!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-127859074-4', 'auto');
+ga('send', {
+                hitType: 'event',
+                eventCategory: 'fancy_server',
+                eventAction: 'loadPage',
+                eventLabel: 'IP: {{ ip }}'
+            });
+</script>
+
+<link rel="stylesheet" type="text/css" href="\static/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<h1>Fancy Server</h1>
+<table>
+    <thead>
+    <tr>
+            <th>Home</th>   
+            <th>Name</th>     
+            <th>Base</th>      
+            <th>Base</th>   
+            <th>Download File</th>   
+            <th>Base and End</th>      
+        </tr>
+
+    </thead>
+        <tr>
+            <td></td>
+            <td><input class="tb" required id="welcomeName" value="Ian"></td>     
+            <td><input class="tb" required id="inputbase" value="2"></td>      
+            <td><input class="tb" required id="inputJsonbase" value="2"></td>   
+            <td></td>   
+            <td><input class="tb" required id="inputBigDownload" value="2" style="width:40px">
+                <input class="tb" required id="inputBigDownloadLen" value="20000" style="width:90px"></td>      
+        </tr>
+        
+        <tr>
+            <td><input type="button" onclick="parent.location='/'" value="Home" /></td>     
+            <td><input type="button" onclick="personalWelcome()" value="Personal Welcome" /></td>     
+            <td><input type="button" onclick="parent.location='/maths?base=' + $('#inputbase').val();" value="See Maths!" /></td>
+            <td><input type="button" onclick="window.open('/json?base=' + $('#inputJsonbase').val(), '_blank');" value="See JSON Maths!" /></td>   
+            <td><input type="button" onclick="window.open('/download_file', '_blank');" value="Download file" /></td>      
+            <td><input type="button" onclick="window.open('/big_download/'+$('#inputBigDownloadLen').val()+'?base=' + $('#inputBigDownload').val(), '_blank');" value="Download big file" /></td>      
+        </tr>
+</table>
+<script>
+    function personalWelcome(){
+        var name = $("#welcomeName").val();
+        if (name == ""){
+            alert("Please provide a name");
+            return
+        }
+         parent.location='/welcome/'+name
+    }
+</script>
+<br><br>
+<img src='/static/images/github.png' onclick="window.open('https://github.com/hapticPaper/helloFlask', '_blank')" width="32px" style="cursor: pointer;"></img>

@@ -1,0 +1,87 @@
+<html>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127859074-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-127859074-4');
+</script>
+
+    <!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-127859074-4', 'auto');
+ga('send', {
+                hitType: 'event',
+                eventCategory: 'personalWelcome',
+                eventAction: 'loadPage',
+                eventLabel: 'IP: {{ ip }}'
+            });
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="\static\highlightjs\atom-one-dark.css">
+<script src="\static\highlightjs\highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<title>Welcome {{ name }}!</title>
+
+<head>
+</head>
+
+<body>
+    <h1>
+        Welcome {{ name }}
+    </h1>
+
+
+<span class='bodyCode' style="color:darkgrey">
+
+</span><br>
+This is route and function that renders this page (python).
+<div style="width:700px;">
+<pre><code class="language-python">@app.route('/welcome/&lt;name&gt;')
+def hello(name):
+    return render_template('personalWelcome.html', name=name)
+</code></pre>
+This is the html template used to make the heading.
+<pre><code class="language-html">&lt;h1&gt;
+    Welcome &#x7b;&#x7b; name &#x7d;&#x7d;
+&lt;/h1&gt;
+</code></pre>
+
+<bodyCode>/welcome/&lt;name&gt;</bodyCode>
+<br>Whatever follows <bodyCode>/welcome/</bodyCode> will become assigned to the variable <bodyCode>name</bodyCode>.<br>
+<br>
+
+<bodyCode>def hello(name):</bodyCode><br>
+The variable (and the value assigned to) <bodyCode>name</bodyCode>will now be available to the function.<br><br>
+
+<bodyCode>name=name</bodyCode><br>
+Render the template, but replace <bodyCode>&#x7b;&#x7b; name &#x7d;&#x7d;</bodyCode> with the value passed into <bodyCode>name</bodyCode>.<br>
+
+
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div style="margin: 0 auto; width:100%; height:400px;">
+    <object type="text/html" data="/fancy_server"
+            style="width:100%; height:100%; margin:0%;">
+    </object>
+</div>
+</body>
+
+
+</html>

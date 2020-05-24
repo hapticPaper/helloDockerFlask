@@ -1,0 +1,88 @@
+<html>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127859074-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-127859074-4');
+</script>
+
+    <!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-127859074-4', 'auto');
+ga('send', {
+                hitType: 'event',
+                eventCategory: 'index',
+                eventAction: 'loadPage',
+                eventLabel: 'IP: {{ ip }}'
+            });
+</script>
+
+
+
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="\static\highlightjs\atom-one-dark.css">
+<script src="\static\highlightjs\highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<title>Flask!</title>
+
+<head>
+</head>
+
+<body>
+    <h1>
+        Welcome to Hello Flask
+    </h1>
+
+
+<span class='bodyCode' style="color:darkgrey">
+
+</span><br>
+This is some boiler-plate code to launch the server behind this page:
+<div style="width:750px;">
+<pre><code class="language-python">from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def main():
+    return render_template('/index.html')
+    
+if __name__ == '__main__':
+    app.run(threaded=True, debug=True)
+</code></pre>
+
+<span style="float:right">
+    <input type="button" onclick="window.open('/downloadBoilerplate', '_blank');" value="Download Script" />
+</span>
+
+    The parts that matter here are:<br><br>
+    <bodyCode>@app.route('/')</bodyCode><br>What follows are the instructions 
+    for what to return when the user browses to <bodyCode>/</bodyCode><br><br>
+    <bodyCode>return render_template('index.html')</bodyCode><br>
+    Render the template <bodyCode>index.html</bodyCode><br><br>
+    <bodyCode>app.run()</bodyCode><br>
+    <b>Start the server.</b>
+    The default is to run on the loopback address <bodyCode>127.0.0.1</bodyCode>, on port <bodyCode>5000</bodyCode>.
+    <br>
+    <span style="float:right">
+    <input type="button" onclick="window.open('/download_zip', '_blank');" value="Download Barebones Site" />
+</span>
+</div>
+<br>
+<br>
+<div style="margin: 0 auto; width:100%; height:400px;">
+    <object type="text/html" data="/fancy_server"
+            style="width:100%; height:100%; margin:0%;">
+    </object>
+</div>
+</body>
+
+</html>

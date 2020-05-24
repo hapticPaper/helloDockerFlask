@@ -1,0 +1,96 @@
+<html>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127859074-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-127859074-4');
+</script>
+
+    <!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-127859074-4', 'auto');
+ga('send', {
+                hitType: 'event',
+                eventCategory: 'maths',
+                eventAction: 'loadPage',
+                eventLabel: 'IP: {{ ip }}'
+            });
+</script>
+
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="\static\highlightjs\atom-one-dark.css">
+<script src="\static\highlightjs\highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<title>Flask Maths!</title>
+
+<head>
+</head>
+
+<body>
+    <h1>
+        Math! Base 10 coverted to base {{ base }} for 0-29.
+    </h1>
+
+
+<span class='bodyCode' style="color:darkgrey">
+
+</span><br>
+This is route and function that renders this page.
+<div style="width:1080px;">
+<pre><code class="language-python">@app.route('/maths')
+def maths():
+    parser = reqparse.RequestParser()
+    parser.add_argument('base', type=str, required=True, help="An number is required.", action='append')
+    args = parser.parse_args()
+    base = args['base'][0]
+    numbersdf = pandas.DataFrame([[n, int2base(n, int(base))] for n in range(30)], columns = ['base 10',f'base {base}'])
+    return render_template('maths.html',base=base, numbers=numbersdf.to_html(index=False))
+</code></pre>
+HTML template to render the table:
+<pre><code class="language-html">&lt;body&gt;
+    &#x7b;&#x7b; numbers | safe &#x7d;&#x7d;
+&lt;/body&gt;
+</code></pre>
+DataFrame HTML Table CSS
+<pre><code class="language-css">@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
+.dataframe &#x7b;
+    font-family: 'Source Code Pro', monospace;
+    border: 1pc;
+    text-align: right;
+&#x7d;
+</code></pre>
+
+
+
+
+    <bodyCode>parser.parse_args()</bodyCode>
+    <br>A <bodyCode>reqparse.RequestParser()</bodyCode> must be initialized, and all arguments must be added to the class with <bodyCode>parser.add_argument()</bodyCode>.<br>
+    Then arguments can be collected with <bodyCode>parser.parse_args()</bodyCode> and they can then be unpacked from the variable they get assigned to.<br>
+    <br>
+
+    <bodyCode>numbersdf.to_html(index=False)</bodyCode><br>
+    Pandas DataFrames have a function <bodyCode>.to_html()</bodyCode>which will make an html table that can be directly rendered. <br><br>
+
+    <bodyCode>&#x7b;&#x7b; numbers | safe &#x7d;&#x7d;</bodyCode><br>
+    When the template is rendered, any html code provided in <bodyCode>numbers</bodyCode> is <bodyCode>safe</bodyCode> and we can directly render it.<br>
+</div>
+
+<br>
+{{ numbers | safe }}
+<br>
+<div style="margin: 0 auto; width:100%; height:400px;">
+    <object type="text/html" data="/fancy_server"
+            style="width:100%; height:100%; margin:0%;">
+    </object>
+</div>
+</body>
+
+
+</html>
