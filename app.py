@@ -9,6 +9,11 @@ gkey = base64.b64decode(gmap_key).decode('utf8')
 import string
 digs = string.digits + "".join([s.upper() for s in string.ascii_letters])
 
+FLASK_HOST = os.environ['FLASK_HOST']
+FLASK_PORT = os.environ['FLASK_PORT']
+
+
+
 GMAPS = 'https://maps.googleapis.com/maps/api'
 
 def ENDPOINT(ep): return f"{GMAPS}/{ep}/json"
@@ -166,4 +171,4 @@ def download_zip():
     return send_from_directory(os.path.join('static','files'), 'hello_flask.zip', as_attachment=True)
 
 if __name__ == '__main__':
-    app.run(threaded=True, debug=True)
+    app.run(threaded=True, debug=True, host=FLASK_HOST, port=FLASK_PORT)
