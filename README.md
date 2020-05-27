@@ -6,10 +6,13 @@ clone the rep with
 `git clone git@github.com:hapticPaper/helloFlask.git`
 
 `cd` into the new directory:
-`cd helloFlask`
+`cd helloDockerFlask`
 
-Run the server
-`python app.py`
+Build the docker image:
+`docker build -t helloFlask:latest . `
+
+Run the newly created image:
+`docker run helloFlask:latest`
 
 
 You can see the site running live at https://rusty-flask.herokuapp.com/
